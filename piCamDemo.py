@@ -48,7 +48,7 @@ while DISPLAY.loop_running():
 	#cap_image = rawCapture.array
 	#cv2.imwrite("Image.jpg",cap_image)
 	
-	sprite = pi3d.ImageSprite(pi3d.Texture(im),shader,w=100.0,h=100.0,z=5.0)
+	sprite = pi3d.ImageSprite(pi3d.Texture(image),shader,w=100.0,h=100.0,z=5.0)
 	sprite.draw()
 	sprite.position(100,100,5.0)
 	
