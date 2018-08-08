@@ -16,8 +16,10 @@ time.sleep(0.5)
 #print("Image capture and written to disk")
 captureImg()
 
+
 DISPLAY = pi3d.Display.create(x=10, y=150, frames_per_second=20)
 shader = pi3d.Shader("uv_flat")
+CAMERA = pi3d.Camera(is_3d=False)
 im = Image.open("Image.jpg")
 tex = pi3d.Texture(im)
 sprite = pi3d.ImageSprite(tex,shader,w=100.0,h=100.0,z=5.0)
