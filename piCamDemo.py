@@ -30,7 +30,7 @@ while DISPLAY.loop_running():
     sprite.draw()
     sprite.position(100,100,5.0)
 
-    if mykeys.read() == 27:
+	if mykeys.read() == 27:
 		mykeys.close()
 		DISPLAY.destroy()
 		break
