@@ -6,6 +6,7 @@ import pi3d
 from PIL import Image
 
 camera=PiCamera()
+camera.resolution = (100,100)
 rawCapture=PiRGBArray(camera)
 time.sleep(0.5)
 
