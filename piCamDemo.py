@@ -16,8 +16,9 @@ cap_image=rawCapture.array
 cv2.imwrite("Image.jpg",cap_image)
 print("Image capture and written to disk")
 
-DISPLAY = pi3d.Display.create(x=150, y=150, frames_per_second=20)
+DISPLAY = pi3d.Display.create(x=50, y=50, frames_per_second=20)
 shader = pi3d.Shader("uv_flat")
+CAMERA = pi3d.Camera(is_3d=False)
 im = Image.open("Image.jpg")
 tex = pi3d.Texture(im)
 sprite = pi3d.ImageSprite(tex,shader,w=100.0,h=100.0,z=5.0)
