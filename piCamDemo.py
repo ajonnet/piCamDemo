@@ -27,8 +27,8 @@ sprite = pi3d.ImageSprite(tex,shader,w=100.0,h=100.0,z=5.0)
 mykeys = pi3d.Keyboard()
 
 while DISPLAY.loop_running():
-    sprite.draw()
-    sprite.position(100,100,5.0)
+	sprite.draw()
+	sprite.position(100,100,5.0)
 
 	if mykeys.read() == 27:
 		mykeys.close()
