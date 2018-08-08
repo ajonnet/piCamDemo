@@ -11,14 +11,14 @@ rawCapture=PiRGBArray(camera)
 time.sleep(0.5)
 
 camera.capture(rawCapture, format="bgr")
-image=rawCapture.array
+cap_image=rawCapture.array
 
-#cv2.imwrite("Image.jpg",image)
-#print("Image capture and written to disk")
+cv2.imwrite("Image.jpg",cap_image)
+print("Image capture and written to disk")
 
 DISPLAY = pi3d.Display.create(x=150, y=150, frames_per_second=20)
 shader = pi3d.Shader("uv_flat")
-im = Image.fromarray(image)
+im = Image.open("Image.jpg")
 tex = pi3d.Texture(im)
 sprite = pi3d.ImageSprite(tex,shader,w=100.0,h=100.0,z=5.0)
 
