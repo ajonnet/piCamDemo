@@ -5,12 +5,16 @@ import cv2
 import pi3d
 from PIL import Image
 
-camera=PiCamera()
-camera.resolution = (128,112)
-rawCapture=PiRGBArray(camera)
-time.sleep(0.5)
+cam_width = 128
+cam_height = 112
 
-camera.capture("Image.jpg")
+camera = PiCamera()
+camera.resolution = (cam_width,cam_height)
+rawCapture=PiRGBArray(camera, size=(cam_width,cam_height))
+
+time.sleep(1)
+
+#camera.capture("Image.jpg")
 
 #camera.capture(rawCapture, format="bgr")
 #cap_image = rawCapture.array
@@ -26,28 +30,30 @@ camera.capture("Image.jpg")
 DISPLAY = pi3d.Display.create(x=10, y=150, frames_per_second=20)
 shader = pi3d.Shader("uv_flat")
 CAMERA = pi3d.Camera(is_3d=False)
-im = Image.open("Image.jpg")
-tex = pi3d.Texture(im)
-sprite = pi3d.ImageSprite(tex,shader,w=100.0,h=100.0,z=5.0)
-#sprite = pi3d.ImageSprite("textures/PATRN.PNG", shader, w=100.0, h=100.0, z=5.0)
 mykeys = pi3d.Keyboard()
 
-while DISPLAY.loop_running():
-	sprite.draw()
-	sprite.position(100,100,5.0)
+#im = Image.open("Image.jpg")
+#tex = pi3d.Texture(im)
+#sprite = pi3d.ImageSprite(tex,shader,w=100.0,h=100.0,z=5.0)
+#sprite = pi3d.ImageSprite("textures/PATRN.PNG", shader, w=100.0, h=100.0, z=5.0)
 
-	camera.capture("Image.jpg")
+
+while DISPLAY.loop_running():
+	rawCapture.truncate(0)
+	camera.capture(rawCapture, format="bgr", use_video_port=True)
+	image = rawCapture.array;
+
+	#camera.capture("Image.jpg")
 	#camera.capture(rawCapture, format="bgr")
 	#cap_image = rawCapture.array
 	#cv2.imwrite("Image.jpg",cap_image)
 	
-	sprite = pi3d.ImageSprite("Image.jpg",shader,w=100.0,h=100.0,z=5.0)
+	sprite = pi3d.ImageSprite(pi3d.Texture(im),shader,w=100.0,h=100.0,z=5.0)
+	sprite.draw()
+	sprite.position(100,100,5.0)
 	
 	if mykeys.read() == 27:
 		mykeys.close()
 		DISPLAY.destroy()
 		camera.close()
 		break
-
-
-
