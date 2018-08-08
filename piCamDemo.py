@@ -3,6 +3,7 @@ from picamera import PiCamera
 import time
 import cv2
 import pi3d
+from PIL import Image
 
 camera=PiCamera()
 rawCapture=PiRGBArray(camera)
@@ -19,7 +20,7 @@ shader = pi3d.Shader("uv_flat")
 
 im = Image.fromarray(image)
 tex = pi3d.Texture(im)
-sprite = pi3d.ImageSprite(tex,shader,w=100.0,h=100.0)
+sprite = pi3d.ImageSprite(tex,shader,w=100.0,h=100.0,z=5.0)
 DISPLAY = pi3d.Display.create(x=150, y=150, frames_per_second=20)
 
 #sprite = pi3d.ImageSprite("textures/PATRN.PNG", shader, w=100.0, h=100.0, z=5.0)
