@@ -9,6 +9,11 @@ camera=PiCamera()
 rawCapture=PiRGBArray(camera)
 time.sleep(0.5)
 
+def captureImg():
+	camera.capture(rawCapture, format="bgr")
+	cap_image = rawCapture.array
+	cv2.imwrite("Image.jpg",cap_image)
+
 #camera.capture(rawCapture, format="bgr")
 #camera.close()
 #cap_image=rawCapture.array
@@ -40,7 +45,4 @@ while DISPLAY.loop_running():
 		break
 
 
-def captureImg()
-	camera.capture(rawCapture, format="bgr")
-	cap_image = rawCapture.array
-	cv2.imwrite("Image.jpg",cap_image)
+
