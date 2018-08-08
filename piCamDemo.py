@@ -10,9 +10,11 @@ camera.resolution = (128,112)
 rawCapture=PiRGBArray(camera)
 time.sleep(0.5)
 
-camera.capture(rawCapture, format="bgr")
-cap_image = rawCapture.array
-cv2.imwrite("Image.jpg",cap_image)
+camera.capture("Image.jpg")
+
+#camera.capture(rawCapture, format="bgr")
+#cap_image = rawCapture.array
+#cv2.imwrite("Image.jpg",cap_image)
 
 #camera.capture(rawCapture, format="bgr")
 #camera.close()
@@ -34,9 +36,10 @@ while DISPLAY.loop_running():
 	sprite.draw()
 	sprite.position(100,100,5.0)
 
-	camera.capture(rawCapture, format="bgr")
-	cap_image = rawCapture.array
-	cv2.imwrite("Image.jpg",cap_image)
+	camera.capture("Image.jpg")
+	#camera.capture(rawCapture, format="bgr")
+	#cap_image = rawCapture.array
+	#cv2.imwrite("Image.jpg",cap_image)
 	
 	sprite = pi3d.ImageSprite("Image.jpg",shader,w=100.0,h=100.0,z=5.0)
 	
