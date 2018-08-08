@@ -16,12 +16,12 @@ image=rawCapture.array
 #cv2.imwrite("Image.jpg",image)
 #print("Image capture and written to disk")
 
+DISPLAY = pi3d.Display.create(x=150, y=150, frames_per_second=20)
 shader = pi3d.Shader("uv_flat")
-
 im = Image.fromarray(image)
 tex = pi3d.Texture(im)
 sprite = pi3d.ImageSprite(tex,shader,w=100.0,h=100.0,z=5.0)
-DISPLAY = pi3d.Display.create(x=150, y=150, frames_per_second=20)
+
 
 #sprite = pi3d.ImageSprite("textures/PATRN.PNG", shader, w=100.0, h=100.0, z=5.0)
 mykeys = pi3d.Keyboard()
