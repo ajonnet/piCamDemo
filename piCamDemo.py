@@ -32,6 +32,6 @@ while DISPLAY.loop_running():
 
     if mykeys.read() == 27:
     	mykeys.close()
-        DISPLAY.destroy()
-    	break
+		DISPLAY.destroy()
+		break
     
