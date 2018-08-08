@@ -6,11 +6,11 @@ import pi3d
 from PIL import Image
 
 camera=PiCamera()
+
 rawCapture=PiRGBArray(camera)
-
 time.sleep(0.5)
-
 camera.capture(rawCapture, format="bgr")
+camera.close()
 cap_image=rawCapture.array
 
 cv2.imwrite("Image.jpg",cap_image)
@@ -31,7 +31,7 @@ while DISPLAY.loop_running():
     sprite.position(100,100,5.0)
 
     if mykeys.read() == 27:
-        mykeys.close()
+    	mykeys.close()
         DISPLAY.destroy()
-    break
+    	break
     
